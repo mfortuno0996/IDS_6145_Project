@@ -20,10 +20,11 @@ class Exhaust(mesa.Agent): #An Exhaust agent class
         accumulation_prob = 0.65
         accumulation_chance = self.model.grid.get_neighbors(self.pos, moore=True, include_center = False)
         if len(accumulation_chance) > 4: #checks to see how much exhaust agents are next to the agent for it to accumulate
-            if self.random.random < accumulation_prob: #chance to accumulate
+            if self.random.random() < accumulation_prob: #chance to accumulate
                 self.accumulation_size += 1 #increases the "size" of the exhaust agent
 
 
     def step(self):
         self.move()
         self.accumulation()
+
