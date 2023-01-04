@@ -7,7 +7,10 @@ def agent_portrayal(agent):
     if agent is None:
         return
 
-    portrayal = {"Shape": "circle", "Filled": "true", "r": "0.5"}
+    portrayal = {"Shape": "circle", "Filled": "true", "Layer": 0}
+    (x,y) = agent.pos
+    portrayal['x'] = x
+    portrayal['y'] = y
     if agent.accumulation_size == 1: #standard exhaust portrayal
         portrayal["Color"] = '#A0A0A0' #light gray
         portrayal['r'] = 0.2 #small size
@@ -26,7 +29,7 @@ def agent_portrayal(agent):
     return portrayal
 
 
-grid = mesa.visualization.CanvasGrid(agent_portrayal, 100, 100, 500, 500)
+grid = mesa.visualization.CanvasGrid(agent_portrayal, 100, 100, 1000, 1000)
 
 model_params = {"height": 100,
                 "width": 100,
